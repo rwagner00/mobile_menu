@@ -1,0 +1,6 @@
+name = Mobile Menu Management
+description = Allows the user to select menus to be mobile friendly. 
+core = 7.x
+
+files[] = mobile_menu.module
+scripts[] = mobile_menu.js

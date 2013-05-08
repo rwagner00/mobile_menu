@@ -1,0 +1,14 @@
+1) Attach show->hide of actual menu to click on title
+2) Apply to multiple menus on same page
+3) Get menu id's from PHP
+4) Implement configuration page
+5) Cause JQuery hide() to fire based on screen size and to check size on screen resize
+
+
+2* = https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/forEach
+
+3* = http://drupal.org/node/756722
+
+4* = http://drupal.org/node/206761
+
+5* = http://jqapi.com/#p=resize

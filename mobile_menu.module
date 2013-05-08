@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_hook_init().
+ */
+function mobile_menu_hook_init() {
+  drupal_set_message(t('message'));
+  
+}
+
+/**
+ * Implements hook_node_load().
+ */
+function mobile_menu_node_load($nodes, $types) {
+  drupal_set_message('nopenopenope');
+}
