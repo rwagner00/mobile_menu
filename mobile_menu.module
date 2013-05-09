@@ -87,3 +87,12 @@ function mobile_menu_js_alter(&$javascript) {
     'hide_title' => $title_hide,
     )), 'setting');
 }
+
+/**
+ * Implements hook_uninstall().
+ */
+function mobile_menu_uninstall() {
+  variable_del('mobile_menu_id');
+  variable_del('mobile_menu_breakpoint');
+  variable_del('mobile_menu_title_hide');
+}
