@@ -5,3 +5,4 @@ Stages:
  ✔ Get menu id's from PHP @done (13-05-09 17:02)
  ✔ Implement configuration page @done (13-05-09 17:02)
  ✔ Test and push. @done (13-05-09 17:21)
+ ✔ Add functionality to allow hiding of menu titles in desktop mode. @done (13-05-09 17:41)
