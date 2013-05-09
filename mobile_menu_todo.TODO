@@ -1,0 +1,7 @@
+Stages:
+ ✔ Attach show->hide of actual menu to click on title @done (13-04-09 12:54)
+ ✔ Apply to multiple menus on same page @done (13-05-09 10:24)
+ ✔ Cause JQuery hide() to fire based on screen size and to check size on screen resize, then show/hide based on screen dimensions. @done (13-05-09 13:31)
+ ✔ Get menu id's from PHP @done (13-05-09 17:02)
+ ✔ Implement configuration page @done (13-05-09 17:02)
+ ✔ Test and push. @done (13-05-09 17:21)

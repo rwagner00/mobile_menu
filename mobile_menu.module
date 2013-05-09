@@ -1,16 +1,79 @@
 <?php
 
 /**
- * Implements hook_hook_init().
+ * Implements hook_menu().
  */
-function mobile_menu_hook_init() {
-  drupal_set_message(t('message'));
-  
+function mobile_menu_menu() {
+  $items = array();
+  $items['admin/config/mobile-menu'] = array(
+    'title' => 'Mobile Menu',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('mobile_menu_administration_form'),
+    'access arguments' => array('administer users'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+
+/**
+ * Responsible for generating the administration form.
+ */
+function mobile_menu_administration_form($form, &$form_state)
+{
+  $form = array();
+
+  $form['mobile_menu_breakpoint'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile breakpoint value'),
+    '#default_value' => variable_get('mobile_menu_breakpoint', '480'),
+    '#size' => 20,
+    '#maxlength' => 128,
+    '#required' => TRUE,
+  );
+  $form['mobile_menu_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('CSS ID\'s'),
+    '#description' => t('These should be the CSS id\'s of the menus you want to make mobile responsive. Please separate all values by a comma.'),
+    '#default_value' => implode(', ', variable_get('mobile_menu_id', array('#block-system-navigation'))),
+    '#size' => 60,
+    '#maxlength' => 516,
+    '#required' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save settings'),
+  );
+
+  return $form;
 }
 
 /**
- * Implements hook_node_load().
+ * Manages the mobile_menu_administration form. 
  */
-function mobile_menu_node_load($nodes, $types) {
-  drupal_set_message('nopenopenope');
+function mobile_menu_administration_form_submit($form, &$form_state) {
+  variable_set('mobile_menu_breakpoint', $form_state['values']['mobile_menu_breakpoint']);
+
+  //Strip the white space from the ID's and then convert to an array.
+  $ids = explode(',', str_replace(' ', '', $form_state['values']['mobile_menu_id']));
+  variable_set('mobile_menu_id', $ids);
+
+  drupal_set_message(t('Your settings have been saved.'));
+}
+
+
+/**
+ * Implements hook_js_alter().
+ * Responsible for grabbing the ids and breakpoint variables and
+ * passing them to javascript for evaluation.
+ */
+function mobile_menu_js_alter(&$javascript) {
+  $ids = variable_get('mobile_menu_id', '#block-system-navigation');
+  $breakpoint = variable_get('mobile_menu_breakpoint', '480');
+  drupal_add_js(array('mobile_menu' => array(
+    'menu_ids' => $ids,
+    'menu_breakpoint' => $breakpoint,
+
+    )), 'setting');
 }
