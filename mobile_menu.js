@@ -2,12 +2,15 @@
   Drupal.behaviors.mobile_menu = {
     attach: function(context, settings) {
 
-      //Get current width and set variables to avoid incredibly verbose functions.
+      //Get current width and set variables and manage multiple vs. single values for menu ids.
       var currentWidth = getwidth();
       var breakpoint = Drupal.settings.mobile_menu.menu_breakpoint;
-      var menu_ids = Drupal.settings.mobile_menu.menu_ids;
+      if (typeof(Drupal.settings.mobile_menu.menu_ids) == "string") {
+        var menu_ids = [Drupal.settings.mobile_menu.menu_ids];
+      } else {
+        var menu_ids = Drupal.settings.mobile_menu.menu_ids;
+      };
       var title_hide = Drupal.settings.mobile_menu.hide_title;
-
 
       //On document load, check to see if at the mobile breakpoint. If so, trigger mobile mode.
       if (currentWidth <= breakpoint) {

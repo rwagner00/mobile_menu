@@ -6,4 +6,4 @@ Stages:
  ✔ Implement configuration page @done (13-05-09 17:02)
  ✔ Test and push. @done (13-05-09 17:21)
  ✔ Add functionality to allow hiding of menu titles in desktop mode. @done (13-05-09 17:41)
- ☐ Add uninstall function to clear variables.
+ ✔ Add uninstall function to clear variables. @done (13-05-09 18:16)
