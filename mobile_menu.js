@@ -27,9 +27,9 @@
       //Hides menus and binds click to show.
       function mobilizeMenus(menu_array) {
         $.each( menu_array, function(key, value) {
-          $(value + " .menu").hide();
+          $(value + " ul").hide();
           $(value + " h2").show().bind('click', function() {
-            $(value + " .menu").slideToggle();
+            $(value + " ul").slideToggle();
           });
         });
       }
@@ -37,7 +37,7 @@
       //Shows menus and unbinds click.
       function desktopMenus(menu_array) {
         $.each( menu_array, function(key, value) {
-          $(value + " .menu").show();
+          $(value + " ul").show();
           $(value + " h2").unbind('click');
           if (title_hide == 1) {
             $(value + " h2").hide();
