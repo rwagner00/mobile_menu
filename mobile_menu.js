@@ -27,9 +27,9 @@
       //Hides menus and binds click to show.
       function mobilizeMenus(menu_array) {
         $.each( menu_array, function(key, value) {
-          $(value + " ul").hide();
+          $(value + " ul").not(":.contextual-links").hide();
           $(value + " h2").show().bind('click', function() {
-            $(value + " ul").slideToggle();
+            $(value + " ul").not(":.contextual-links").slideToggle();
           });
         });
       }
