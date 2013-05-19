@@ -37,7 +37,7 @@
       //Shows menus and unbinds click.
       function desktopMenus(menu_array) {
         $.each( menu_array, function(key, value) {
-          $(value + " ul").show();
+          $(value + " ul").not(":.contextual-links").show();
           $(value + " h2").unbind('click');
           if (title_hide == 1) {
             $(value + " h2").hide();
